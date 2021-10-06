@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Restaurant
+
+<div class="jumbotron">
+  <h3>Editing @Model.Name</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RestaurantId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.LabelFor(model => model.MealPrice)
+  @Html.EditorFor(model => model.MealPrice, new { @type="number" })
+
+  @Html.LabelFor(model => model.Cuisine)
+  @Html.DropDownList("CuisineId")
+
+  @Html.LabelFor(model => model.Outdoor)
+  @Html.CheckBoxFor(model => model.Outdoor)
+
+  @Html.LabelFor(model => model.Reservations)
+  @Html.CheckBoxFor(model => model.Reservations)
+
+  <input type="submit" value="Save"/>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Restaurant
+
+<div class="jumbotron">
+  <h3>Details</h3>
+</div>
+<hr/>
+<h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
+<p>@Html.DisplayNameFor(model => model.Cuisine.Type): @Html.DisplayFor(model => model.Cuisine.Type)<br>
+  Average meal price: $@Html.DisplayFor(model => model.MealPrice)</p>
+
+@if (Model.Outdoor)
+{
+<p>This restaurant has outdoor seating.</p>
+}
+@if (Model.Reservations)
+{
+<p>This restaurant accepts reservations.</p>
+}
+
+</ul>
+<p>@Html.ActionLink("Back to List", "Index")</p>
+<p>@Html.ActionLink("Edit Restaurant", "Edit", new { id = Model.RestaurantId})</p>
+<p>@Html.ActionLink("Delete Restaurant", "Delete", new { id = Model.RestaurantId})</p>

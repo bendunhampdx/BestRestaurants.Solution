@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Cuisine
+
+<div class="jumbotron">
+  <h3>Deleting @Model.Type</h3>
+</div>
+
+<p>Are you sure?</p>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete"/>
+}
+@Html.ActionLink("Back to Cusine List", "Index")

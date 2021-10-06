@@ -68,5 +68,12 @@ namespace BestRestaurants.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Search(int id)
+    {
+      List<Restaurant> model = _db.Restaurants.Where(restaurant => restaurant.CuisineId == id).ToList();
+      ViewBag.Cuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      return View(model);
+    }
   }
 }
