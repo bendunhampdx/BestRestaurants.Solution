@@ -16,17 +16,17 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cuisine`
+-- Table structure for table `cuisines`
 --
 
-DROP TABLE IF EXISTS `cuisine`;
+DROP TABLE IF EXISTS `cuisines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cuisine` (
+CREATE TABLE `cuisines` (
   `CuisineId` int NOT NULL AUTO_INCREMENT,
   `Type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`CuisineId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,9 +39,12 @@ DROP TABLE IF EXISTS `restaurants`;
 CREATE TABLE `restaurants` (
   `RestaurantId` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
+  `MealPrice` int DEFAULT '0',
+  `Outdoor` bit(1) DEFAULT b'0',
+  `Reservations` bit(1) DEFAULT b'0',
   `CuisineId` int DEFAULT '0',
   PRIMARY KEY (`RestaurantId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +56,4 @@ CREATE TABLE `restaurants` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-06 10:35:55
+-- Dump completed on 2021-10-06 15:52:24
