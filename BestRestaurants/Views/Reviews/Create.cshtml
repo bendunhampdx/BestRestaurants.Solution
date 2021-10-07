@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Review
+
+<div class="jumbotron">
+  <h3>Add a new review</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Text)
+  @Html.TextBoxFor(model => model.Text)
+
+  <!-- Could not get Html Helper to work for default value -->
+  <input data-val="true" data-val-required="The RestaurantId field is required." id="RestaurantId" name="RestaurantId" type="hidden" value=@ViewBag.Restaurant.RestaurantId.ToString()>
+
+  <input type="submit" value="Add new review" class="btn btn-default"/>
+}
+<p>@Html.ActionLink("Show all reviews", "Index")</p>

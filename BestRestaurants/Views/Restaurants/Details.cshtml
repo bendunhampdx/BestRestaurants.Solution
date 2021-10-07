@@ -3,25 +3,43 @@
 }
 
 @model BestRestaurants.Models.Restaurant
+@using BestRestaurants.Models
 
 <div class="jumbotron">
   <h3>Details</h3>
 </div>
-<hr/>
+<hr />
 <h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
 <p>@Html.DisplayNameFor(model => model.Cuisine.Type): @Html.DisplayFor(model => model.Cuisine.Type)<br>
   Average meal price: $@Html.DisplayFor(model => model.MealPrice)</p>
 
 @if (Model.Outdoor)
 {
-<p>This restaurant has outdoor seating.</p>
+  <p>This restaurant has outdoor seating.</p>
 }
 @if (Model.Reservations)
 {
-<p>This restaurant accepts reservations.</p>
+  <p>This restaurant accepts reservations.</p>
 }
 
+@if (ViewBag.ReviewList.Count == 0)
+{
+  <p>No reviews for this restaurant have been added.</p>
+}
+
+<ul>
+  @foreach (Review review in ViewBag.ReviewList)
+  {
+    <li>
+      <p>@review.Text</p>
+      <p>@Html.ActionLink("Edit Review", "Edit", "Reviews", new { id = review.ReviewId}) @Html.ActionLink("Delete Review",
+      "Delete", "Reviews", new { id = review.ReviewId})</p>
+    </li>
+
+  }
 </ul>
+
+<p>@Html.ActionLink("Review this Restaurant", "Create", "Reviews", new { id = Model.RestaurantId})</p>
 <p>@Html.ActionLink("Back to List", "Index")</p>
 <p>@Html.ActionLink("Edit Restaurant", "Edit", new { id = Model.RestaurantId})</p>
 <p>@Html.ActionLink("Delete Restaurant", "Delete", new { id = Model.RestaurantId})</p>

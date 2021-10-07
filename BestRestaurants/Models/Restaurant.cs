@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace BestRestaurants.Models
 {
   public class Restaurant
@@ -8,6 +10,8 @@ namespace BestRestaurants.Models
     public bool Outdoor { get; set; }
     public bool Reservations { get; set; }
     public int CuisineId { get; set; }
+    public virtual ICollection<Review> Reviews { get; set; }
+
     public virtual Cuisine Cuisine { get; set; }
   }
 }
